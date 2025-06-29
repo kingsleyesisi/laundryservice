@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KINGS CLEAN - Professional Cleaning Services</title>
+    <title>KINGS CLEAN - Premium Laundry & Cleaning Services</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -11,98 +11,183 @@
             theme: {
                 extend: {
                     colors: {
-                        primary: '#1e40af',
-                        secondary: '#f59e0b',
-                        accent: '#10b981'
+                        primary: '#6366f1',
+                        secondary: '#ec4899',
+                        accent: '#06b6d4',
+                        success: '#10b981'
                     },
                     fontFamily: {
-                        'sans': ['Inter', 'system-ui', 'sans-serif']
+                        'sans': ['Poppins', 'system-ui', 'sans-serif']
                     }
                 }
             }
         }
     </script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .carousel-container {
+            position: relative;
+            overflow: hidden;
+        }
+        .carousel-slide {
+            transition: transform 0.5s ease-in-out;
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #6366f1, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .glass-effect {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .dark .glass-effect {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
 </head>
-<body class="font-sans bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
-    <!-- Header -->
-    <header class="bg-white dark:bg-gray-800 shadow-lg fixed w-full top-0 z-50 transition-colors duration-300">
-        <nav class="container mx-auto px-6 py-4">
-            <div class="flex justify-between items-center">
-                <div class="flex items-center space-x-2">
-                    <div class="bg-primary text-white p-2 rounded-lg">
-                        <i class="fas fa-crown text-xl"></i>
+<body class="font-sans bg-gradient-to-br from-slate-50 to-blue-50 dark:from-gray-900 dark:to-slate-900 transition-all duration-300">
+    <!-- Floating Header -->
+    <header class="fixed w-full top-4 z-50 px-4">
+        <nav class="container mx-auto">
+            <div class="glass-effect rounded-2xl px-6 py-4 shadow-xl">
+                <div class="flex justify-between items-center">
+                    <div class="flex items-center space-x-3">
+                        <div class="bg-gradient-to-r from-primary to-secondary p-3 rounded-xl">
+                            <i class="fas fa-crown text-white text-xl"></i>
+                        </div>
+                        <span class="text-2xl font-bold gradient-text">KINGS CLEAN</span>
                     </div>
-                    <span class="text-2xl font-bold text-gray-800 dark:text-white">KINGS CLEAN</span>
+                    
+                    <div class="hidden md:flex items-center space-x-8">
+                        <a href="#home" class="text-gray-700 dark:text-gray-300 hover:text-primary transition duration-300 font-medium">Home</a>
+                        <a href="#services" class="text-gray-700 dark:text-gray-300 hover:text-primary transition duration-300 font-medium">Services</a>
+                        <a href="#gallery" class="text-gray-700 dark:text-gray-300 hover:text-primary transition duration-300 font-medium">Gallery</a>
+                        <a href="#contact" class="text-gray-700 dark:text-gray-300 hover:text-primary transition duration-300 font-medium">Contact</a>
+                        <button id="theme-toggle" class="p-2 rounded-xl bg-white/20 dark:bg-black/20 text-gray-700 dark:text-gray-300 hover:bg-white/30 dark:hover:bg-black/30 transition duration-300">
+                            <i id="theme-icon" class="fas fa-moon"></i>
+                        </button>
+                        <button class="bg-gradient-to-r from-primary to-secondary text-white px-6 py-2 rounded-xl font-semibold hover:shadow-lg transform hover:scale-105 transition duration-300">
+                            Book Now
+                        </button>
+                    </div>
+                    
+                    <div class="md:hidden">
+                        <button id="mobile-menu-btn" class="text-gray-700 dark:text-gray-300">
+                            <i class="fas fa-bars text-xl"></i>
+                        </button>
+                    </div>
                 </div>
                 
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#home" class="text-gray-700 dark:text-gray-300 hover:text-primary transition duration-300">Home</a>
-                    <a href="#services" class="text-gray-700 dark:text-gray-300 hover:text-primary transition duration-300">Services</a>
-                    <a href="#about" class="text-gray-700 dark:text-gray-300 hover:text-primary transition duration-300">About</a>
-                    <a href="#contact" class="text-gray-700 dark:text-gray-300 hover:text-primary transition duration-300">Contact</a>
-                    <button id="theme-toggle" class="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition duration-300">
-                        <i id="theme-icon" class="fas fa-moon"></i>
+                <!-- Mobile Menu -->
+                <div id="mobile-menu" class="hidden md:hidden mt-4 pt-4 border-t border-white/20">
+                    <a href="#home" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-primary font-medium">Home</a>
+                    <a href="#services" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-primary font-medium">Services</a>
+                    <a href="#gallery" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-primary font-medium">Gallery</a>
+                    <a href="#contact" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-primary font-medium">Contact</a>
+                    <button id="mobile-theme-toggle" class="w-full mt-2 p-2 rounded-xl bg-white/20 dark:bg-black/20 text-gray-700 dark:text-gray-300 hover:bg-white/30 dark:hover:bg-black/30 transition duration-300">
+                        <i id="mobile-theme-icon" class="fas fa-moon mr-2"></i>Toggle Theme
                     </button>
-                    <button class="bg-primary text-white px-6 py-2 rounded-full hover:bg-blue-700 transition duration-300">
-                        Get Quote
-                    </button>
-                </div>
-                
-                <div class="md:hidden">
-                    <button id="mobile-menu-btn" class="text-gray-700">
-                        <i class="fas fa-bars text-xl"></i>
+                    <button class="w-full mt-4 bg-gradient-to-r from-primary to-secondary text-white px-6 py-3 rounded-xl font-semibold">
+                        Book Now
                     </button>
                 </div>
-            </div>
-            
-            <!-- Mobile Menu -->
-            <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4">
-                <a href="#home" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-primary">Home</a>
-                <a href="#services" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-primary">Services</a>
-                <a href="#about" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-primary">About</a>
-                <a href="#contact" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-primary">Contact</a>
-                <button id="mobile-theme-toggle" class="w-full mt-2 p-2 rounded-lg bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600 transition duration-300">
-                    <i id="mobile-theme-icon" class="fas fa-moon mr-2"></i>Toggle Theme
-                </button>
-                <button class="w-full mt-4 bg-primary text-white px-6 py-2 rounded-full hover:bg-blue-700 transition duration-300">
-                    Get Quote
-                </button>
             </div>
         </nav>
     </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="pt-20 bg-gradient-to-br from-primary to-blue-800 text-white">
-        <div class="container mx-auto px-6 py-20">
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div>
-                    <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">
-                        Professional <span class="text-secondary">Cleaning</span> Services
-                    </h1>
-                    <p class="text-xl mb-8 text-blue-100">
-                        Experience the royal treatment with KINGS CLEAN. We provide premium cleaning services for homes and businesses with unmatched attention to detail.
-                    </p>
+    <!-- Hero Section with Carousel -->
+    <section id="home" class="min-h-screen flex items-center pt-24 pb-12">
+        <div class="container mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-8">
+                    <div class="space-y-6">
+                        <h1 class="text-5xl lg:text-7xl font-bold leading-tight">
+                            <span class="gradient-text">Premium</span><br>
+                            <span class="text-gray-800 dark:text-white">Laundry &</span><br>
+                            <span class="text-gray-800 dark:text-white">Cleaning</span>
+                        </h1>
+                        <p class="text-xl text-gray-600 dark:text-gray-300 max-w-lg">
+                            Experience royal treatment for your garments and spaces. Professional laundry and cleaning services with unmatched quality and care.
+                        </p>
+                    </div>
+                    
                     <div class="flex flex-col sm:flex-row gap-4">
-                        <button class="bg-secondary text-white px-8 py-4 rounded-full font-semibold hover:bg-yellow-600 transition duration-300 transform hover:scale-105">
-                            Book Now
+                        <button class="bg-gradient-to-r from-primary to-secondary text-white px-8 py-4 rounded-2xl font-semibold hover:shadow-xl transform hover:scale-105 transition duration-300">
+                            <i class="fas fa-calendar-alt mr-2"></i>
+                            Schedule Pickup
                         </button>
-                        <button class="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-primary transition duration-300">
-                            Learn More
+                        <button class="border-2 border-primary text-primary dark:text-white dark:border-white px-8 py-4 rounded-2xl font-semibold hover:bg-primary hover:text-white dark:hover:bg-white dark:hover:text-gray-900 transition duration-300">
+                            <i class="fas fa-play mr-2"></i>
+                            Watch Demo
                         </button>
                     </div>
+                    
+                    <!-- Stats -->
+                    <div class="grid grid-cols-3 gap-6 pt-8">
+                        <div class="text-center">
+                            <div class="text-3xl font-bold gradient-text">1000+</div>
+                            <div class="text-sm text-gray-600 dark:text-gray-400">Happy Customers</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold gradient-text">24/7</div>
+                            <div class="text-sm text-gray-600 dark:text-gray-400">Service Available</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold gradient-text">5★</div>
+                            <div class="text-sm text-gray-600 dark:text-gray-400">Average Rating</div>
+                        </div>
+                    </div>
                 </div>
+                
+                <!-- Carousel -->
                 <div class="relative">
-                    <img src="/placeholder.svg?height=500&width=600" alt="Professional Cleaning" class="rounded-2xl shadow-2xl">
-                    <div class="absolute -bottom-6 -left-6 bg-white text-primary p-6 rounded-xl shadow-lg">
-                        <div class="flex items-center space-x-3">
-                            <i class="fas fa-star text-secondary text-2xl"></i>
-                            <div>
-                                <div class="font-bold text-lg">5.0 Rating</div>
-                                <div class="text-sm text-gray-600">500+ Happy Clients</div>
+                    <div class="carousel-container rounded-3xl overflow-hidden shadow-2xl">
+                        <div id="carousel" class="flex carousel-slide">
+                            <div class="w-full flex-shrink-0 relative">
+                                <img src="/placeholder.svg?height=600&width=500" alt="Professional Laundry Service" class="w-full h-96 lg:h-[500px] object-cover">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                                <div class="absolute bottom-6 left-6 text-white">
+                                    <h3 class="text-2xl font-bold mb-2">Professional Laundry</h3>
+                                    <p class="text-white/80">Expert care for all fabric types</p>
+                                </div>
+                            </div>
+                            <div class="w-full flex-shrink-0 relative">
+                                <img src="/placeholder.svg?height=600&width=500" alt="Dry Cleaning Service" class="w-full h-96 lg:h-[500px] object-cover">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                                <div class="absolute bottom-6 left-6 text-white">
+                                    <h3 class="text-2xl font-bold mb-2">Dry Cleaning</h3>
+                                    <p class="text-white/80">Delicate garment specialists</p>
+                                </div>
+                            </div>
+                            <div class="w-full flex-shrink-0 relative">
+                                <img src="/placeholder.svg?height=600&width=500" alt="Ironing and Pressing" class="w-full h-96 lg:h-[500px] object-cover">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                                <div class="absolute bottom-6 left-6 text-white">
+                                    <h3 class="text-2xl font-bold mb-2">Ironing & Pressing</h3>
+                                    <p class="text-white/80">Crisp, professional finish</p>
+                                </div>
                             </div>
                         </div>
+                    </div>
+                    
+                    <!-- Carousel Controls -->
+                    <button id="prevBtn" class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/20 backdrop-blur-sm text-white p-3 rounded-full hover:bg-white/30 transition duration-300">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button id="nextBtn" class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/20 backdrop-blur-sm text-white p-3 rounded-full hover:bg-white/30 transition duration-300">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                    
+                    <!-- Carousel Indicators -->
+                    <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                        <button class="carousel-indicator w-3 h-3 rounded-full bg-white/50 hover:bg-white/80 transition duration-300" data-slide="0"></button>
+                        <button class="carousel-indicator w-3 h-3 rounded-full bg-white/50 hover:bg-white/80 transition duration-300" data-slide="1"></button>
+                        <button class="carousel-indicator w-3 h-3 rounded-full bg-white/50 hover:bg-white/80 transition duration-300" data-slide="2"></button>
                     </div>
                 </div>
             </div>
@@ -110,328 +195,281 @@
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="py-20 bg-white dark:bg-gray-900 transition-colors duration-300">
+    <section id="services" class="py-20">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-gray-800 dark:text-white mb-4">Our Premium Services</h2>
-                <p class="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                    From residential to commercial cleaning, we offer comprehensive solutions tailored to your needs.
+                <h2 class="text-4xl lg:text-5xl font-bold mb-6">
+                    <span class="gradient-text">Our Premium</span>
+                    <span class="text-gray-800 dark:text-white"> Services</span>
+                </h2>
+                <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+                    From delicate laundry care to comprehensive cleaning solutions, we deliver excellence in every service.
                 </p>
             </div>
             
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Service Card 1 -->
-                <div class="bg-gray-50 dark:bg-gray-800 p-8 rounded-2xl hover:shadow-xl dark:hover:shadow-2xl transition duration-300 transform hover:-translate-y-2 border dark:border-gray-700">
-                    <div class="bg-primary text-white p-4 rounded-xl w-16 h-16 flex items-center justify-center mb-6">
-                        <i class="fas fa-home text-2xl"></i>
+                <div class="group bg-white/70 dark:bg-gray-800/70 backdrop-blur-sm p-8 rounded-3xl hover:shadow-2xl transition duration-500 transform hover:-translate-y-2 border border-white/20 dark:border-gray-700/50">
+                    <div class="bg-gradient-to-r from-primary to-secondary text-white p-4 rounded-2xl w-16 h-16 flex items-center justify-center mb-6 group-hover:scale-110 transition duration-300">
+                        <i class="fas fa-tshirt text-2xl"></i>
                     </div>
-                    <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">Residential Cleaning</h3>
-                    <p class="text-gray-600 dark:text-gray-300 mb-6">Complete home cleaning services including deep cleaning, regular maintenance, and move-in/move-out cleaning.</p>
-                    <ul class="text-gray-600 dark:text-gray-300 space-y-2">
-                        <li class="flex items-center"><i class="fas fa-check text-accent mr-2"></i> Kitchen & Bathroom Deep Clean</li>
-                        <li class="flex items-center"><i class="fas fa-check text-accent mr-2"></i> Floor Care & Vacuuming</li>
-                        <li class="flex items-center"><i class="fas fa-check text-accent mr-2"></i> Dusting & Sanitizing</li>
+                    <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">Laundry Service</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-6">Professional washing, drying, and folding with premium detergents and fabric care.</p>
+                    <ul class="text-gray-600 dark:text-gray-300 space-y-2 mb-6">
+                        <li class="flex items-center"><i class="fas fa-check text-success mr-3"></i> Pickup & Delivery</li>
+                        <li class="flex items-center"><i class="fas fa-check text-success mr-3"></i> Eco-Friendly Products</li>
+                        <li class="flex items-center"><i class="fas fa-check text-success mr-3"></i> Same Day Service</li>
                     </ul>
-                    <button class="text-primary font-semibold hover:text-blue-700 transition duration-300">
-                        Learn More <i class="fas fa-arrow-right ml-2"></i>
-                    </button>
+                    <div class="text-2xl font-bold gradient-text">From $15</div>
                 </div>
 
                 <!-- Service Card 2 -->
-                <div class="bg-gray-50 dark:bg-gray-800 p-8 rounded-2xl hover:shadow-xl dark:hover:shadow-2xl transition duration-300 transform hover:-translate-y-2 border dark:border-gray-700">
-                    <div class="bg-secondary text-white p-4 rounded-xl w-16 h-16 flex items-center justify-center mb-6">
-                        <i class="fas fa-building text-2xl"></i>
+                <div class="group bg-white/70 dark:bg-gray-800/70 backdrop-blur-sm p-8 rounded-3xl hover:shadow-2xl transition duration-500 transform hover:-translate-y-2 border border-white/20 dark:border-gray-700/50">
+                    <div class="bg-gradient-to-r from-secondary to-accent text-white p-4 rounded-2xl w-16 h-16 flex items-center justify-center mb-6 group-hover:scale-110 transition duration-300">
+                        <i class="fas fa-spray-can text-2xl"></i>
                     </div>
-                    <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">Commercial Cleaning</h3>
-                    <p class="text-gray-600 dark:text-gray-300 mb-6">Professional office and commercial space cleaning with flexible scheduling to meet your business needs.</p>
-                    <ul class="text-gray-600 dark:text-gray-300 space-y-2">
-                        <li class="flex items-center"><i class="fas fa-check text-accent mr-2"></i> Office Space Maintenance</li>
-                        <li class="flex items-center"><i class="fas fa-check text-accent mr-2"></i> Restroom Sanitization</li>
-                        <li class="flex items-center"><i class="fas fa-check text-accent mr-2"></i> Window & Glass Cleaning</li>
+                    <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">Dry Cleaning</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-6">Specialized care for delicate fabrics, suits, dresses, and formal wear.</p>
+                    <ul class="text-gray-600 dark:text-gray-300 space-y-2 mb-6">
+                        <li class="flex items-center"><i class="fas fa-check text-success mr-3"></i> Expert Stain Removal</li>
+                        <li class="flex items-center"><i class="fas fa-check text-success mr-3"></i> Garment Protection</li>
+                        <li class="flex items-center"><i class="fas fa-check text-success mr-3"></i> Professional Pressing</li>
                     </ul>
-                    <button class="text-primary font-semibold hover:text-blue-700 transition duration-300">
-                        Learn More <i class="fas fa-arrow-right ml-2"></i>
-                    </button>
+                    <div class="text-2xl font-bold gradient-text">From $25</div>
                 </div>
 
                 <!-- Service Card 3 -->
-                <div class="bg-gray-50 dark:bg-gray-800 p-8 rounded-2xl hover:shadow-xl dark:hover:shadow-2xl transition duration-300 transform hover:-translate-y-2 border dark:border-gray-700">
-                    <div class="bg-accent text-white p-4 rounded-xl w-16 h-16 flex items-center justify-center mb-6">
-                        <i class="fas fa-spray-can text-2xl"></i>
+                <div class="group bg-white/70 dark:bg-gray-800/70 backdrop-blur-sm p-8 rounded-3xl hover:shadow-2xl transition duration-500 transform hover:-translate-y-2 border border-white/20 dark:border-gray-700/50">
+                    <div class="bg-gradient-to-r from-accent to-success text-white p-4 rounded-2xl w-16 h-16 flex items-center justify-center mb-6 group-hover:scale-110 transition duration-300">
+                        <i class="fas fa-home text-2xl"></i>
                     </div>
-                    <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">Deep Cleaning</h3>
-                    <p class="text-gray-600 dark:text-gray-300 mb-6">Intensive cleaning service that reaches every corner, perfect for seasonal cleaning or special occasions.</p>
-                    <ul class="text-gray-600 dark:text-gray-300 space-y-2">
-                        <li class="flex items-center"><i class="fas fa-check text-accent mr-2"></i> Appliance Deep Clean</li>
-                        <li class="flex items-center"><i class="fas fa-check text-accent mr-2"></i> Carpet & Upholstery</li>
-                        <li class="flex items-center"><i class="fas fa-check text-accent mr-2"></i> Detailed Sanitization</li>
+                    <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">Home Cleaning</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-6">Complete residential cleaning services for a spotless and healthy home environment.</p>
+                    <ul class="text-gray-600 dark:text-gray-300 space-y-2 mb-6">
+                        <li class="flex items-center"><i class="fas fa-check text-success mr-3"></i> Deep Cleaning</li>
+                        <li class="flex items-center"><i class="fas fa-check text-success mr-3"></i> Regular Maintenance</li>
+                        <li class="flex items-center"><i class="fas fa-check text-success mr-3"></i> Move-in/Move-out</li>
                     </ul>
-                    <button class="text-primary font-semibold hover:text-blue-700 transition duration-300">
-                        Learn More <i class="fas fa-arrow-right ml-2"></i>
-                    </button>
+                    <div class="text-2xl font-bold gradient-text">From $80</div>
                 </div>
 
                 <!-- Service Card 4 -->
-                <div class="bg-gray-50 dark:bg-gray-800 p-8 rounded-2xl hover:shadow-xl dark:hover:shadow-2xl transition duration-300 transform hover:-translate-y-2 border dark:border-gray-700">
-                    <div class="bg-purple-600 text-white p-4 rounded-xl w-16 h-16 flex items-center justify-center mb-6">
-                        <i class="fas fa-couch text-2xl"></i>
+                <div class="group bg-white/70 dark:bg-gray-800/70 backdrop-blur-sm p-8 rounded-3xl hover:shadow-2xl transition duration-500 transform hover:-translate-y-2 border border-white/20 dark:border-gray-700/50">
+                    <div class="bg-gradient-to-r from-purple-500 to-pink-500 text-white p-4 rounded-2xl w-16 h-16 flex items-center justify-center mb-6 group-hover:scale-110 transition duration-300">
+                        <i class="fas fa-building text-2xl"></i>
                     </div>
-                    <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">Carpet & Upholstery</h3>
-                    <p class="text-gray-600 dark:text-gray-300 mb-6">Specialized cleaning for carpets, rugs, and furniture using professional-grade equipment and eco-friendly products.</p>
-                    <ul class="text-gray-600 dark:text-gray-300 space-y-2">
-                        <li class="flex items-center"><i class="fas fa-check text-accent mr-2"></i> Steam Cleaning</li>
-                        <li class="flex items-center"><i class="fas fa-check text-accent mr-2"></i> Stain Removal</li>
-                        <li class="flex items-center"><i class="fas fa-check text-accent mr-2"></i> Odor Elimination</li>
+                    <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">Office Cleaning</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-6">Professional commercial cleaning services for offices and business spaces.</p>
+                    <ul class="text-gray-600 dark:text-gray-300 space-y-2 mb-6">
+                        <li class="flex items-center"><i class="fas fa-check text-success mr-3"></i> Daily/Weekly Service</li>
+                        <li class="flex items-center"><i class="fas fa-check text-success mr-3"></i> Sanitization</li>
+                        <li class="flex items-center"><i class="fas fa-check text-success mr-3"></i> Flexible Scheduling</li>
                     </ul>
-                    <button class="text-primary font-semibold hover:text-blue-700 transition duration-300">
-                        Learn More <i class="fas fa-arrow-right ml-2"></i>
-                    </button>
+                    <div class="text-2xl font-bold gradient-text">From $120</div>
                 </div>
 
                 <!-- Service Card 5 -->
-                <div class="bg-gray-50 dark:bg-gray-800 p-8 rounded-2xl hover:shadow-xl dark:hover:shadow-2xl transition duration-300 transform hover:-translate-y-2 border dark:border-gray-700">
-                    <div class="bg-pink-600 text-white p-4 rounded-xl w-16 h-16 flex items-center justify-center mb-6">
-                        <i class="fas fa-sparkles text-2xl"></i>
+                <div class="group bg-white/70 dark:bg-gray-800/70 backdrop-blur-sm p-8 rounded-3xl hover:shadow-2xl transition duration-500 transform hover:-translate-y-2 border border-white/20 dark:border-gray-700/50">
+                    <div class="bg-gradient-to-r from-green-500 to-blue-500 text-white p-4 rounded-2xl w-16 h-16 flex items-center justify-center mb-6 group-hover:scale-110 transition duration-300">
+                        <i class="fas fa-couch text-2xl"></i>
                     </div>
-                    <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">Post-Construction</h3>
-                    <p class="text-gray-600 dark:text-gray-300 mb-6">Thorough cleanup after construction or renovation projects, removing dust, debris, and construction residue.</p>
-                    <ul class="text-gray-600 dark:text-gray-300 space-y-2">
-                        <li class="flex items-center"><i class="fas fa-check text-accent mr-2"></i> Debris Removal</li>
-                        <li class="flex items-center"><i class="fas fa-check text-accent mr-2"></i> Dust & Residue Cleanup</li>
-                        <li class="flex items-center"><i class="fas fa-check text-accent mr-2"></i> Final Touch Cleaning</li>
+                    <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">Upholstery Care</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-6">Specialized cleaning for furniture, carpets, and upholstery with advanced techniques.</p>
+                    <ul class="text-gray-600 dark:text-gray-300 space-y-2 mb-6">
+                        <li class="flex items-center"><i class="fas fa-check text-success mr-3"></i> Steam Cleaning</li>
+                        <li class="flex items-center"><i class="fas fa-check text-success mr-3"></i> Stain Protection</li>
+                        <li class="flex items-center"><i class="fas fa-check text-success mr-3"></i> Odor Elimination</li>
                     </ul>
-                    <button class="text-primary font-semibold hover:text-blue-700 transition duration-300">
-                        Learn More <i class="fas fa-arrow-right ml-2"></i>
-                    </button>
+                    <div class="text-2xl font-bold gradient-text">From $60</div>
                 </div>
 
                 <!-- Service Card 6 -->
-                <div class="bg-gray-50 dark:bg-gray-800 p-8 rounded-2xl hover:shadow-xl dark:hover:shadow-2xl transition duration-300 transform hover:-translate-y-2 border dark:border-gray-700">
-                    <div class="bg-green-600 text-white p-4 rounded-xl w-16 h-16 flex items-center justify-center mb-6">
+                <div class="group bg-white/70 dark:bg-gray-800/70 backdrop-blur-sm p-8 rounded-3xl hover:shadow-2xl transition duration-500 transform hover:-translate-y-2 border border-white/20 dark:border-gray-700/50">
+                    <div class="bg-gradient-to-r from-orange-500 to-red-500 text-white p-4 rounded-2xl w-16 h-16 flex items-center justify-center mb-6 group-hover:scale-110 transition duration-300">
                         <i class="fas fa-leaf text-2xl"></i>
                     </div>
-                    <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">Eco-Friendly Cleaning</h3>
-                    <p class="text-gray-600 dark:text-gray-300 mb-6">Environmentally conscious cleaning using green products that are safe for your family and pets.</p>
-                    <ul class="text-gray-600 dark:text-gray-300 space-y-2">
-                        <li class="flex items-center"><i class="fas fa-check text-accent mr-2"></i> Non-Toxic Products</li>
-                        <li class="flex items-center"><i class="fas fa-check text-accent mr-2"></i> Biodegradable Solutions</li>
-                        <li class="flex items-center"><i class="fas fa-check text-accent mr-2"></i> Safe for Pets & Kids</li>
+                    <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">Eco-Friendly</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-6">Green cleaning solutions that are safe for your family, pets, and the environment.</p>
+                    <ul class="text-gray-600 dark:text-gray-300 space-y-2 mb-6">
+                        <li class="flex items-center"><i class="fas fa-check text-success mr-3"></i> Non-Toxic Products</li>
+                        <li class="flex items-center"><i class="fas fa-check text-success mr-3"></i> Biodegradable</li>
+                        <li class="flex items-center"><i class="fas fa-check text-success mr-3"></i> Sustainable Practices</li>
                     </ul>
-                    <button class="text-primary font-semibold hover:text-blue-700 transition duration-300">
-                        Learn More <i class="fas fa-arrow-right ml-2"></i>
-                    </button>
+                    <div class="text-2xl font-bold gradient-text">From $20</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Why Choose Us Section -->
-    <section class="py-20 bg-gray-100 dark:bg-gray-800 transition-colors duration-300">
-        <div class="container mx-auto px-6">
-            <div class="grid lg:grid-cols-2 gap-12 items-center">
-                <div>
-                    <h2 class="text-4xl font-bold text-gray-800 mb-6">Why Choose KINGS CLEAN?</h2>
-                    <p class="text-xl text-gray-600 mb-8">
-                        We're not just another cleaning service. We're your partners in creating pristine, healthy environments that you can be proud of.
-                    </p>
-                    
-                    <div class="space-y-6">
-                        <div class="flex items-start space-x-4">
-                            <div class="bg-primary text-white p-3 rounded-lg">
-                                <i class="fas fa-shield-alt"></i>
-                            </div>
-                            <div>
-                                <h3 class="text-xl font-semibold text-gray-800 mb-2">Fully Insured & Bonded</h3>
-                                <p class="text-gray-600">Complete peace of mind with comprehensive insurance coverage and bonded staff.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start space-x-4">
-                            <div class="bg-secondary text-white p-3 rounded-lg">
-                                <i class="fas fa-clock"></i>
-                            </div>
-                            <div>
-                                <h3 class="text-xl font-semibold text-gray-800 mb-2">Flexible Scheduling</h3>
-                                <p class="text-gray-600">We work around your schedule with convenient booking options and reliable service.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start space-x-4">
-                            <div class="bg-accent text-white p-3 rounded-lg">
-                                <i class="fas fa-award"></i>
-                            </div>
-                            <div>
-                                <h3 class="text-xl font-semibold text-gray-800 mb-2">Quality Guarantee</h3>
-                                <p class="text-gray-600">100% satisfaction guarantee - if you're not happy, we'll make it right.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="relative">
-                    <img src="/placeholder.svg?height=500&width=600" alt="Professional Team" class="rounded-2xl shadow-xl">
-                    <div class="absolute top-6 right-6 bg-white p-4 rounded-xl shadow-lg">
-                        <div class="text-center">
-                            <div class="text-3xl font-bold text-primary">500+</div>
-                            <div class="text-sm text-gray-600">Happy Clients</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="py-20 bg-white dark:bg-gray-900 transition-colors duration-300">
+    <!-- Process Section -->
+    <section class="py-20 bg-white/30 dark:bg-gray-800/30 backdrop-blur-sm">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-gray-800 mb-4">About KINGS CLEAN</h2>
-                <p class="text-xl text-gray-600">
-                    Founded on the principles of excellence and reliability, KINGS CLEAN has been serving the community with premium cleaning services that exceed expectations.
-                </p>
+                <h2 class="text-4xl lg:text-5xl font-bold mb-6">
+                    <span class="text-gray-800 dark:text-white">How It</span>
+                    <span class="gradient-text"> Works</span>
+                </h2>
+                <p class="text-xl text-gray-600 dark:text-gray-300">Simple steps to get your laundry and cleaning done professionally</p>
             </div>
             
-            <div class="grid lg:grid-cols-3 gap-8 mb-16">
-                <div class="text-center">
-                    <div class="bg-primary text-white p-6 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
-                        <i class="fas fa-users text-3xl"></i>
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="text-center group">
+                    <div class="bg-gradient-to-r from-primary to-secondary text-white p-6 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition duration-300">
+                        <span class="text-2xl font-bold">1</span>
                     </div>
-                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Expert Team</h3>
-                    <p class="text-gray-600">Our trained professionals bring years of experience and attention to detail to every job.</p>
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-4">Schedule</h3>
+                    <p class="text-gray-600 dark:text-gray-300">Book online or call us to schedule your pickup time</p>
                 </div>
                 
-                <div class="text-center">
-                    <div class="bg-secondary text-white p-6 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
-                        <i class="fas fa-tools text-3xl"></i>
+                <div class="text-center group">
+                    <div class="bg-gradient-to-r from-secondary to-accent text-white p-6 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition duration-300">
+                        <span class="text-2xl font-bold">2</span>
                     </div>
-                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Professional Equipment</h3>
-                    <p class="text-gray-600">State-of-the-art cleaning equipment and eco-friendly products for superior results.</p>
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-4">Pickup</h3>
+                    <p class="text-gray-600 dark:text-gray-300">We collect your items from your doorstep at the scheduled time</p>
                 </div>
                 
-                <div class="text-center">
-                    <div class="bg-accent text-white p-6 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
-                        <i class="fas fa-heart text-3xl"></i>
+                <div class="text-center group">
+                    <div class="bg-gradient-to-r from-accent to-success text-white p-6 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition duration-300">
+                        <span class="text-2xl font-bold">3</span>
                     </div>
-                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Customer First</h3>
-                    <p class="text-gray-600">Your satisfaction is our priority. We go above and beyond to exceed your expectations.</p>
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-4">Clean</h3>
+                    <p class="text-gray-600 dark:text-gray-300">Professional cleaning with premium products and techniques</p>
+                </div>
+                
+                <div class="text-center group">
+                    <div class="bg-gradient-to-r from-success to-primary text-white p-6 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition duration-300">
+                        <span class="text-2xl font-bold">4</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-4">Deliver</h3>
+                    <p class="text-gray-600 dark:text-gray-300">Fresh, clean items delivered back to your door</p>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl lg:text-5xl font-bold mb-6">
+                    <span class="gradient-text">Our Work</span>
+                    <span class="text-gray-800 dark:text-white"> Gallery</span>
+                </h2>
+                <p class="text-xl text-gray-600 dark:text-gray-300">See the quality and care we put into every service</p>
+            </div>
             
-            <div class="bg-gradient-to-r from-primary to-blue-800 text-white p-12 rounded-3xl text-center">
-                <h3 class="text-3xl font-bold mb-4">Ready to Experience the Royal Treatment?</h3>
-                <p class="text-xl mb-8 text-blue-100">Join hundreds of satisfied customers who trust KINGS CLEAN for their cleaning needs.</p>
-                <button class="bg-secondary text-white px-8 py-4 rounded-full font-semibold hover:bg-yellow-600 transition duration-300 transform hover:scale-105">
-                    Get Your Free Quote Today
-                </button>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="group relative overflow-hidden rounded-2xl">
+                    <img src="/placeholder.svg?height=300&width=400" alt="Before and After" class="w-full h-64 object-cover group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition duration-300">
+                        <div class="absolute bottom-4 left-4 text-white">
+                            <h3 class="font-bold">Before & After</h3>
+                            <p class="text-sm">Stain removal expertise</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="group relative overflow-hidden rounded-2xl">
+                    <img src="/placeholder.svg?height=300&width=400" alt="Professional Equipment" class="w-full h-64 object-cover group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition duration-300">
+                        <div class="absolute bottom-4 left-4 text-white">
+                            <h3 class="font-bold">Modern Equipment</h3>
+                            <p class="text-sm">State-of-the-art facilities</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="group relative overflow-hidden rounded-2xl">
+                    <img src="/placeholder.svg?height=300&width=400" alt="Quality Results" class="w-full h-64 object-cover group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition duration-300">
+                        <div class="absolute bottom-4 left-4 text-white">
+                            <h3 class="font-bold">Perfect Results</h3>
+                            <p class="text-sm">Every time, guaranteed</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-20 bg-gray-100 dark:bg-gray-800 transition-colors duration-300">
+    <section id="contact" class="py-20 bg-white/30 dark:bg-gray-800/30 backdrop-blur-sm">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-gray-800 mb-4">Get In Touch</h2>
-                <p class="text-xl text-gray-600">Ready to book your cleaning service? Contact us today for a free quote.</p>
+                <h2 class="text-4xl lg:text-5xl font-bold mb-6">
+                    <span class="text-gray-800 dark:text-white">Get In</span>
+                    <span class="gradient-text"> Touch</span>
+                </h2>
+                <p class="text-xl text-gray-600 dark:text-gray-300">Ready to experience premium cleaning services?</p>
             </div>
             
-            <div class="grid lg:grid-cols-2 gap-12">
-                <div>
-                    <div class="bg-white p-8 rounded-2xl shadow-lg">
-                        <h3 class="text-2xl font-bold text-gray-800 mb-6">Contact Information</h3>
-                        
-                        <div class="space-y-6">
-                            <div class="flex items-center space-x-4">
-                                <div class="bg-primary text-white p-3 rounded-lg">
-                                    <i class="fas fa-phone"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-semibold text-gray-800">Phone</h4>
-                                    <p class="text-gray-600">+1 (555) 123-4567</p>
-                                </div>
-                            </div>
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-white/70 dark:bg-gray-800/70 backdrop-blur-sm p-8 rounded-3xl shadow-xl border border-white/20 dark:border-gray-700/50">
+                    <div class="grid lg:grid-cols-2 gap-12">
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-6">Contact Information</h3>
                             
-                            <div class="flex items-center space-x-4">
-                                <div class="bg-secondary text-white p-3 rounded-lg">
-                                    <i class="fas fa-envelope"></i>
+                            <div class="space-y-6">
+                                <div class="flex items-center space-x-4">
+                                    <div class="bg-gradient-to-r from-primary to-secondary text-white p-3 rounded-xl">
+                                        <i class="fas fa-phone"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-800 dark:text-white">Phone</h4>
+                                        <p class="text-gray-600 dark:text-gray-300">+1 (555) 123-4567</p>
+                                    </div>
                                 </div>
-                                <div>
-                                    <h4 class="font-semibold text-gray-800">Email</h4>
-                                    <p class="text-gray-600">info@kingsclean.com</p>
+                                
+                                <div class="flex items-center space-x-4">
+                                    <div class="bg-gradient-to-r from-secondary to-accent text-white p-3 rounded-xl">
+                                        <i class="fas fa-envelope"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-800 dark:text-white">Email</h4>
+                                        <p class="text-gray-600 dark:text-gray-300">info@kingsclean.com</p>
+                                    </div>
                                 </div>
-                            </div>
-                            
-                            <div class="flex items-center space-x-4">
-                                <div class="bg-accent text-white p-3 rounded-lg">
-                                    <i class="fas fa-map-marker-alt"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-semibold text-gray-800">Address</h4>
-                                    <p class="text-gray-600">123 Clean Street, City, State 12345</p>
-                                </div>
-                            </div>
-                            
-                            <div class="flex items-center space-x-4">
-                                <div class="bg-purple-600 text-white p-3 rounded-lg">
-                                    <i class="fas fa-clock"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-semibold text-gray-800">Business Hours</h4>
-                                    <p class="text-gray-600">Mon-Fri: 8AM-6PM<br>Sat: 9AM-4PM<br>Sun: Closed</p>
+                                
+                                <div class="flex items-center space-x-4">
+                                    <div class="bg-gradient-to-r from-accent to-success text-white p-3 rounded-xl">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-800 dark:text-white">Address</h4>
+                                        <p class="text-gray-600 dark:text-gray-300">123 Clean Street, City, State 12345</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                
-                <div>
-                    <div class="bg-white p-8 rounded-2xl shadow-lg">
-                        <h3 class="text-2xl font-bold text-gray-800 mb-6">Request a Quote</h3>
                         
-                        <form class="space-y-6">
-                            <div class="grid md:grid-cols-2 gap-4">
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">First Name</label>
-                                    <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-6">Quick Quote</h3>
+                            
+                            <form class="space-y-4">
+                                <div class="grid md:grid-cols-2 gap-4">
+                                    <input type="text" placeholder="First Name" class="w-full px-4 py-3 bg-white/50 dark:bg-gray-700/50 border border-gray-200 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent backdrop-blur-sm">
+                                    <input type="text" placeholder="Last Name" class="w-full px-4 py-3 bg-white/50 dark:bg-gray-700/50 border border-gray-200 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent backdrop-blur-sm">
                                 </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Last Name</label>
-                                    <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
-                                </div>
-                            </div>
-                            
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
-                                <input type="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
-                            </div>
-                            
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Phone</label>
-                                <input type="tel" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
-                            </div>
-                            
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Service Type</label>
-                                <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
-                                    <option>Select a service</option>
-                                    <option>Residential Cleaning</option>
-                                    <option>Commercial Cleaning</option>
-                                    <option>Deep Cleaning</option>
-                                    <option>Carpet & Upholstery</option>
-                                    <option>Post-Construction</option>
-                                    <option>Eco-Friendly Cleaning</option>
+                                
+                                <input type="email" placeholder="Email Address" class="w-full px-4 py-3 bg-white/50 dark:bg-gray-700/50 border border-gray-200 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent backdrop-blur-sm">
+                                
+                                <select class="w-full px-4 py-3 bg-white/50 dark:bg-gray-700/50 border border-gray-200 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent backdrop-blur-sm">
+                                    <option>Select Service</option>
+                                    <option>Laundry Service</option>
+                                    <option>Dry Cleaning</option>
+                                    <option>Home Cleaning</option>
+                                    <option>Office Cleaning</option>
+                                    <option>Upholstery Care</option>
                                 </select>
-                            </div>
-                            
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Message</label>
-                                <textarea rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Tell us about your cleaning needs..."></textarea>
-                            </div>
-                            
-                            <button type="submit" class="w-full bg-primary text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-700 transition duration-300 transform hover:scale-105">
-                                Send Message
-                            </button>
-                        </form>
+                                
+                                <textarea rows="4" placeholder="Tell us about your needs..." class="w-full px-4 py-3 bg-white/50 dark:bg-gray-700/50 border border-gray-200 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent backdrop-blur-sm"></textarea>
+                                
+                                <button type="submit" class="w-full bg-gradient-to-r from-primary to-secondary text-white px-8 py-4 rounded-xl font-semibold hover:shadow-xl transform hover:scale-105 transition duration-300">
+                                    Get Free Quote
+                                </button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -439,52 +477,43 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 dark:bg-black text-white py-12 transition-colors duration-300">
+    <footer class="bg-gray-900 dark:bg-black text-white py-12">
         <div class="container mx-auto px-6">
             <div class="grid md:grid-cols-3 gap-8 items-center">
                 <div>
-                    <div class="flex items-center space-x-2 mb-4">
-                        <div class="bg-primary text-white p-2 rounded-lg">
-                            <i class="fas fa-crown text-xl"></i>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="bg-gradient-to-r from-primary to-secondary p-3 rounded-xl">
+                            <i class="fas fa-crown text-white text-xl"></i>
                         </div>
                         <span class="text-2xl font-bold">KINGS CLEAN</span>
                     </div>
                     <p class="text-gray-400">
-                        Professional cleaning services that treat your space like royalty.
+                        Premium laundry and cleaning services with royal treatment.
                     </p>
                 </div>
                 
                 <div class="text-center">
-                    <div class="flex justify-center space-x-6">
-                        <a href="#" class="bg-primary p-3 rounded-lg hover:bg-blue-700 transition duration-300">
+                    <div class="flex justify-center space-x-4">
+                        <a href="#" class="bg-primary p-3 rounded-xl hover:bg-blue-700 transition duration-300">
                             <i class="fab fa-facebook-f"></i>
                         </a>
-                        <a href="#" class="bg-primary p-3 rounded-lg hover:bg-blue-700 transition duration-300">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="#" class="bg-primary p-3 rounded-lg hover:bg-blue-700 transition duration-300">
+                        <a href="#" class="bg-primary p-3 rounded-xl hover:bg-blue-700 transition duration-300">
                             <i class="fab fa-instagram"></i>
                         </a>
-                        <a href="#" class="bg-primary p-3 rounded-lg hover:bg-blue-700 transition duration-300">
-                            <i class="fab fa-linkedin-in"></i>
+                        <a href="#" class="bg-primary p-3 rounded-xl hover:bg-blue-700 transition duration-300">
+                            <i class="fab fa-twitter"></i>
                         </a>
                     </div>
                 </div>
                 
                 <div class="text-right">
                     <div class="space-y-2 text-gray-400">
-                        <div class="flex items-center justify-end space-x-2">
-                            <i class="fas fa-phone text-primary"></i>
-                            <span>+1 (555) 123-4567</span>
-                        </div>
-                        <div class="flex items-center justify-end space-x-2">
-                            <i class="fas fa-envelope text-primary"></i>
-                            <span>info@kingsclean.com</span>
-                        </div>
+                        <div>📞 +1 (555) 123-4567</div>
+                        <div>✉️ info@kingsclean.com</div>
                     </div>
                 </div>
             </div>
-        
+            
             <div class="border-t border-gray-800 mt-8 pt-6 text-center text-gray-400">
                 <p>&copy; 2024 KINGS CLEAN. All rights reserved.</p>
             </div>
@@ -499,7 +528,6 @@
         const mobileThemeIcon = document.getElementById('mobile-theme-icon');
         const html = document.documentElement;
         
-        // Check for saved theme preference or default to light mode
         const currentTheme = localStorage.getItem('theme') || 'light';
         
         if (currentTheme === 'dark') {
@@ -525,7 +553,7 @@
         
         themeToggle.addEventListener('click', toggleTheme);
         mobileThemeToggle.addEventListener('click', toggleTheme);
-    
+
         // Mobile menu toggle
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
@@ -533,8 +561,57 @@
         mobileMenuBtn.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
         });
+
+        // Carousel functionality
+        const carousel = document.getElementById('carousel');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const indicators = document.querySelectorAll('.carousel-indicator');
         
-        // Smooth scrolling for navigation links
+        let currentSlide = 0;
+        const totalSlides = 3;
+        
+        function updateCarousel() {
+            carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
+            
+            indicators.forEach((indicator, index) => {
+                if (index === currentSlide) {
+                    indicator.classList.add('bg-white');
+                    indicator.classList.remove('bg-white/50');
+                } else {
+                    indicator.classList.remove('bg-white');
+                    indicator.classList.add('bg-white/50');
+                }
+            });
+        }
+        
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateCarousel();
+        }
+        
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            updateCarousel();
+        }
+        
+        nextBtn.addEventListener('click', nextSlide);
+        prevBtn.addEventListener('click', prevSlide);
+        
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => {
+                currentSlide = index;
+                updateCarousel();
+            });
+        });
+        
+        // Auto-play carousel
+        setInterval(nextSlide, 5000);
+        
+        // Initialize carousel
+        updateCarousel();
+
+        // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -546,16 +623,6 @@
                     });
                 }
             });
-        });
-        
-        // Header scroll effect
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            if (window.scrollY > 100) {
-                header.classList.add('backdrop-blur-sm');
-            } else {
-                header.classList.remove('backdrop-blur-sm');
-            }
         });
     </script>
 </body>
